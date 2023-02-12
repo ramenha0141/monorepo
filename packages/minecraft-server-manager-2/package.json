@@ -1,0 +1,52 @@
+{
+    "name": "minecraft-server-manager-2",
+    "productName": "MinecraftServerManager",
+    "private": true,
+    "version": "2.0.0",
+    "description": "Manager for Minecraft Server",
+    "author": "ramenha0141 <ramenhaoishii@gmail.com>",
+    "license": "MIT",
+    "main": "dist/electron/main/index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && electron-builder"
+    },
+    "engines": {
+        "node": ">=14.17.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.10.0",
+        "@emotion/styled": "^11.10.0",
+        "@fontsource/roboto": "^4.5.8",
+        "@mui/icons-material": "^5.8.4",
+        "@mui/lab": "5.0.0-alpha.95",
+        "@mui/material": "^5.10.0",
+        "electron-window-state": "^5.0.3",
+        "jotai": "^1.7.8",
+        "jsonfile": "^6.1.0",
+        "mkdirp": "^1.0.4",
+        "node-fetch": "^3.2.10",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.3.0",
+        "universalify": "^2.0.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@types/node": "^18.7.3",
+        "@types/react": "^18.0.15",
+        "@types/react-dom": "^18.0.6",
+        "@types/uuid": "^8.3.4",
+        "@vitejs/plugin-react": "^2.0.0",
+        "electron": "^19.0.9",
+        "electron-builder": "^23.1.0",
+        "prettier": "^2.7.1",
+        "typescript": "^4.7.4",
+        "vite": "^3.0.2",
+        "vite-plugin-electron": "^0.8.3"
+    },
+    "env": {
+        "VITE_DEV_SERVER_HOST": "127.0.0.1",
+        "VITE_DEV_SERVER_PORT": 7777
+    }
+}

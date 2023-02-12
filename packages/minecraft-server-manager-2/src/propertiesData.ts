@@ -1,0 +1,66 @@
+const _p = (isBool: boolean, defaultValue: string, detail: string) => ({
+    isBool,
+    defaultValue,
+    detail
+});
+
+const propertiesData = {
+    'allow-flight': _p(true, 'false', '飛行を許可する'),
+    'allow-nether': _p(true, 'true', 'プレイヤーがネザーに行くことを許可する'),
+    'broadcast-console-to-ops': _p(true, 'true', 'コンソールコマンドの出力をオンラインのオペレータに送信する'),
+    'broadcast-rcon-to-ops': _p(true, 'true', 'オンラインのオペレータにrconコンソールのコマンド出力を送信する'),
+    difficulty: _p(false, 'easy', 'サーバーの難易度（Mob から受けるダメージや、プレイヤーの空腹度、毒のダメージなどに影響する）を決定する'),
+    'enable-command-block': _p(true, 'false', 'コマンドブロックを有効にする'),
+    'enable-jmx-monitoring': _p(true, 'false', ''),
+    'enable-rcon': _p(true, 'false', 'サーバーコンソールへのリモートアクセスを有効にする'),
+    'sync-chunk-writes': _p(true, 'true', '同期チャンク書き込みを有効にする'),
+    'enable-status': _p(true, 'true', 'サーバーをサーバーリスト上でオンラインとして表示する'),
+    'enable-query': _p(true, 'false', 'GameSpy4のプロトコルサーバーリスナーを有効にする'),
+    'entity-broadcast-range-percentage': _p(false, '100', '	エンティティがどの程度近くにいる場合にクライアントに送信するかを制御する'),
+    'force-gamemode': _p(true, 'false', 'プレイヤーにデフォルトのゲームモードで参加させる'),
+    'function-permission-level': _p(false, '2', '関数の既存の権限レベルを設定する'),
+    gamemode: _p(false, 'survival', 'ゲームモードを決定する'),
+    'generate-structures': _p(true, 'true', '構造物（村など）を生成するかどうかを決定する'),
+    'generator-settings': _p(false, '', 'ワールド生成のカスタマイズに使用される設定'),
+    hardcore: _p(true, 'false', 'true に設定した場合、プレイヤーが死んだ際にスペクテイターモードになる'),
+    'level-name': _p(false, 'world', 'ワールド名とそのフォルダ名として使用される'),
+    'level-seed': _p(false, '', 'シングルプレイのように、ワールドのシード値を設定できる'),
+    'level-type': _p(false, 'minecraft\\:normal', '生成されるマップのタイプを決定する'),
+    'max-build-height': _p(false, '256', '建築が許可される最高高度'),
+    'max-players': _p(false, '20', '同時にサーバー上でプレイできるプレイヤーの最大数'),
+    'max-tick-time': _p(false, '60000', 'サーバーのウォッチドッグが、サーバーを停止させるまでにかかる単一ティックの最大ミリ秒'),
+    'max-world-size': _p(false, '29999984', 'ワールド境界の最大サイズの半径を設定する'),
+    motd: _p(false, 'A Minecraft Server', 'クライアントのサーバー一覧の、サーバー名の下に表示されるメッセージ'),
+    'network-compression-threshold': _p(
+        false,
+        '256',
+        'デフォルトでは、n-1バイトの大きさのパケットは正常に送信できるが、nバイト以上のパケットは圧縮されるため、数値が小さいほど圧縮率は高くなるが、少量のバイトを圧縮すると、実際には入ったものよりも大きな結果になる可能性がある'
+    ),
+    'online-mode': _p(true, 'true', 'サーバーは、プレイヤーをMinecraftアカウントデータベースに対して接続チェックする'),
+    'op-permission-level': _p(false, '4', '/op を使用したときに与えられるデフォルトの権限レベルを設定する'),
+    'player-idle-timeout': _p(false, '0', '無操作のプレイヤーがサーバーからキックされるまでの時間を分で設定する'),
+    'prevent-proxy-connections': _p(true, 'false', 'サーバーから送信されたISP/ASがMojangの認証サーバーと異なる場合、プレイヤーはキックされる'),
+    pvp: _p(true, 'true', 'サーバーでの PvP を有効にする'),
+    'query.port': _p(false, '25565', 'クエリサーバーのポート番号を設定する'),
+    'rate-limit': _p(false, '0', 'プレイヤーがキックされるまでに送信できるパケットの最大量を設定する'),
+    'rcon.password': _p(false, '', 'RCONのパスワードを設定する'),
+    'rcon.port': _p(false, '25575', 'RCONネットワークのポート番号を設定する'),
+    'resource-pack': _p(false, '', 'リソースパックへの URI を設定する'),
+    'resource-pack-sha1': _p(false, '', 'リソースパックのSHA-1 digestを小文字の16進数で指定できる'),
+    'server-ip': _p(false, '', 'サーバーを特定のIPにバインドしたい場合に設定する必要がある'),
+    'server-port': _p(false, '25565', 'サーバーがホスト（リスン）するポート番号を設定する'),
+    'snooper-enabled': _p(true, 'true', 'サーバーが定期的にsnoopデータをhttp://snoop.minecraft.netに送信するかどうかを設定する'),
+    'spawn-animals': _p(true, 'true', '動物がスポーンできるかどうかを決定する'),
+    'spawn-monsters': _p(true, 'true', 'モンスターがスポーンするかどうかを決定する'),
+    'spawn-npcs': _p(true, 'true', '村人がスポーンするかどうかを決定する'),
+    'spawn-protection': _p(false, '16', 'スポーン保護の半径を2x+1として決定する'),
+    'use-native-transport': _p(true, 'true', 'Linuxサーバーのパフォーマンスの向上：Linuxでのパケット送受信の最適化'),
+    'view-distance': _p(
+        false,
+        '10',
+        '	サーバーがクライアントに送信するワールドデータの量を、プレーヤーの各方向のチャンク（直径ではなく半径）で測定して設定する'
+    ),
+    'white-list': _p(true, 'false', 'ホワイトリストを有効にする'),
+    'enforce-whitelist': _p(true, 'false', 'サーバーにホワイトリストを適用する')
+};
+export default propertiesData;
