@@ -16,13 +16,16 @@ renderer.setSize(width, height);
 const scene = new three.Scene();
 
 const camera = new three.PerspectiveCamera(45, width / height);
-camera.position.set(0, 0, 300);
 
-new OrbitControls(camera, canvas);
+const orbit_controls = new OrbitControls(camera, canvas);
 
 {
     const map_size = 256;
+    const map_max_height = 600;
     const map = [...new Array(map_size)].map((_) => new Float64Array(map_size));
+
+    camera.position.set(0, map_max_height / 2, 300);
+    orbit_controls.target = new three.Vector3(0, map_max_height / 2, 0);
 
     const divide = (x: number, y: number, size: number, z: [number, number, number, number]) => {
         if (size === 1) {
@@ -44,7 +47,7 @@ new OrbitControls(camera, canvas);
         }
     };
 
-    divide(0, 0, map_size, [Math.random(), Math.random(), Math.random(), Math.random()]);
+    divide(0, 0, map_size, [0.5, 0.5, 0.5, 0.5]);
 
     const material = new three.LineBasicMaterial({ color: 0x0000ff });
 
@@ -52,15 +55,18 @@ new OrbitControls(camera, canvas);
         const p1: three.Vector3[] = [];
         const p2: three.Vector3[] = [];
         for (let j = 0; j < map_size; j++) {
-            p1.push(new three.Vector3(i - map_size / 2, j - map_size / 2, map[i][j] * 300));
-            p2.push(new three.Vector3(j - map_size / 2, i - map_size / 2, map[j][i] * 300));
+            p1.push(
+                new three.Vector3(i - map_size / 2, map[i][j] * map_max_height, j - map_size / 2)
+            );
+            p2.push(
+                new three.Vector3(j - map_size / 2, map[j][i] * map_max_height, i - map_size / 2)
+            );
         }
 
         const g1 = new three.BufferGeometry().setFromPoints(p1);
         const g2 = new three.BufferGeometry().setFromPoints(p2);
         scene.add(new three.Line(g1, material), new three.Line(g2, material));
     }
-    console.log(map);
 }
 
 const stats = Stats();
