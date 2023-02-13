@@ -1,9 +1,6 @@
 {
     "name": "monorepo",
     "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
     "devDependencies": {
         "rome": "^11.0.0"
     }
