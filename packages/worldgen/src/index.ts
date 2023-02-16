@@ -8,7 +8,7 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 const renderer = new three.WebGLRenderer({
-    canvas
+    canvas,
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(width, height);
@@ -56,10 +56,10 @@ const orbit_controls = new OrbitControls(camera, canvas);
         const p2: three.Vector3[] = [];
         for (let j = 0; j < map_size; j++) {
             p1.push(
-                new three.Vector3(i - map_size / 2, map[i][j] * map_max_height, j - map_size / 2)
+                new three.Vector3(i - map_size / 2, map[i][j] * map_max_height, j - map_size / 2),
             );
             p2.push(
-                new three.Vector3(j - map_size / 2, map[j][i] * map_max_height, i - map_size / 2)
+                new three.Vector3(j - map_size / 2, map[j][i] * map_max_height, i - map_size / 2),
             );
         }
 
