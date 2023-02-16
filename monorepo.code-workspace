@@ -11,6 +11,9 @@
             "path": "packages/minecraft"
         },
         {
+            "path": "packages/minecraft-client"
+        },
+        {
             "path": "packages/minecraft-server-manager-2"
         },
         {
