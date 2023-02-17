@@ -26,6 +26,7 @@ export default function NewTab() {
                 >
                     <Box sx={{ flexGrow: 2 }} />
                     <Search />
+                    <Box sx={{ flexGrow: 10 }} />
                 </Container>
             </Box>
         </MantineProvider>
