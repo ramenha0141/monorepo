@@ -2,6 +2,7 @@ import { Box, Container, MantineProvider } from '@mantine/core';
 import { useColorScheme } from '@mantine/hooks';
 import MontereyLight from 'data-base64:~assets/Monterey Light.webp';
 import MontereyDark from 'data-base64:~assets/Monterey Dark.webp';
+import Search from './Search';
 
 export default function NewTab() {
     const colorScheme = useColorScheme();
@@ -24,6 +25,7 @@ export default function NewTab() {
                     sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}
                 >
                     <Box sx={{ flexGrow: 2 }} />
+                    <Search />
                 </Container>
             </Box>
         </MantineProvider>
