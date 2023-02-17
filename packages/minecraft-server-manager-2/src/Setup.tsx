@@ -1,12 +1,36 @@
 import { Check as CheckIcon } from '@mui/icons-material';
-import { Alert, Autocomplete, Box, Button, Checkbox, CircularProgress, FormControlLabel, Step, StepLabel, Stepper, TextField, Typography } from '@mui/material';
+import {
+    Alert,
+    Autocomplete,
+    Box,
+    Button,
+    Checkbox,
+    CircularProgress,
+    FormControlLabel,
+    Step,
+    StepLabel,
+    Stepper,
+    TextField,
+    Typography,
+} from '@mui/material';
 import { useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Version } from './API';
 import { profilesState } from './states';
 
-const versions: Version[] = ['1.19.2', 'Paper1.19.2', '1.19', '1.18.2', '1.17.1', '1.16.5', '1.15.2', '1.14.4', '1.13.2', '1.12.2'];
+const versions: Version[] = [
+    '1.19.2',
+    'Paper1.19.2',
+    '1.19',
+    '1.18.2',
+    '1.17.1',
+    '1.16.5',
+    '1.15.2',
+    '1.14.4',
+    '1.13.2',
+    '1.12.2',
+];
 
 const Setup = () => {
     const { id } = useParams();
@@ -51,7 +75,16 @@ const Setup = () => {
         return null;
     }
     return (
-        <Box sx={{ flexGrow: 1, mx: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Box
+            sx={{
+                flexGrow: 1,
+                mx: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
             <Typography variant='h5' sx={{ mb: 2 }}>
                 セットアップ
             </Typography>
@@ -66,7 +99,15 @@ const Setup = () => {
                         sx={{ width: 300 }}
                         renderInput={(params) => <TextField {...params} label='バージョン' />}
                     ></Autocomplete>
-                    <Alert severity={javaVersionState ? (javaVersionState === 'needInstall' ? 'error' : 'warning') : 'success'}>
+                    <Alert
+                        severity={
+                            javaVersionState
+                                ? javaVersionState === 'needInstall'
+                                    ? 'error'
+                                    : 'warning'
+                                : 'success'
+                        }
+                    >
                         {javaVersionState
                             ? javaVersionState === 'needInstall'
                                 ? `Javaがインストールされていないかバージョンが低いです。推奨:Java${recommendedJavaVersion}`
@@ -74,10 +115,19 @@ const Setup = () => {
                             : '推奨バージョンのJavaがインストールされています。'}
                     </Alert>
                     <FormControlLabel
-                        control={<Checkbox checked={eulaChecked} onChange={(e) => setEulaChecked(e.target.checked)} />}
+                        control={
+                            <Checkbox
+                                checked={eulaChecked}
+                                onChange={(e) => setEulaChecked(e.target.checked)}
+                            />
+                        }
                         label={
                             <>
-                                <a href='https://aka.ms/MinecraftEULA' target='_blank' style={{ color: 'inherit' }}>
+                                <a
+                                    href='https://aka.ms/MinecraftEULA'
+                                    target='_blank'
+                                    style={{ color: 'inherit' }}
+                                >
                                     MINECRAFT エンド ユーザー ライセンス条項
                                 </a>
                                 に同意する
@@ -99,7 +149,11 @@ const Setup = () => {
                         </Step>
                     </Stepper>
                     {installState === 2 && (
-                        <Button variant='contained' onClick={() => navigate(`/manage/${id}`)} sx={{ mt: 1 }}>
+                        <Button
+                            variant='contained'
+                            onClick={() => navigate(`/manage/${id}`)}
+                            sx={{ mt: 1 }}
+                        >
                             コンソールへ進む
                         </Button>
                     )}

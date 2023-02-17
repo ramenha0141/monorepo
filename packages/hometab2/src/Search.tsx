@@ -8,7 +8,7 @@ const SearchContainer = styled('div')({
     position: 'relative',
     width: '100%',
     height: 60,
-    margin: '64px 0'
+    margin: '64px 0',
 });
 const SearchBox = styled('div')(({ theme }) => ({
     position: 'absolute',
@@ -19,7 +19,7 @@ const SearchBox = styled('div')(({ theme }) => ({
     borderRadius: 12,
     backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.4)',
     backdropFilter: 'blur(40px)',
-    boxShadow: '0 10px 15px rgb(0 0 0 / 20%)'
+    boxShadow: '0 10px 15px rgb(0 0 0 / 20%)',
 }));
 const Input = styled('input')(({ theme }) => ({
     width: '100%',
@@ -30,7 +30,7 @@ const Input = styled('input')(({ theme }) => ({
     padding: '0 24px',
     background: 'none',
     border: 'none',
-    outline: 'none'
+    outline: 'none',
 }));
 
 let isDuringComposition = false;
@@ -63,14 +63,14 @@ const Search = () => {
                                     } else if (text.startsWith('npm:') && text.length > 4) {
                                         goUrl(
                                             `https://www.npmjs.com/search?q=${encodeURIComponent(
-                                                text.slice(4)
-                                            )}`
+                                                text.slice(4),
+                                            )}`,
                                         );
                                     } else {
                                         goUrl(
                                             `https://www.google.co.jp/search?q=${encodeURIComponent(
-                                                text
-                                            )}`
+                                                text,
+                                            )}`,
                                         );
                                     }
                                 }
@@ -96,7 +96,7 @@ const Search = () => {
                         left: 0,
                         top: 0,
                         width: '100vw',
-                        height: '100vh'
+                        height: '100vh',
                     }}
                     onClick={() => setFocused(false)}
                 />

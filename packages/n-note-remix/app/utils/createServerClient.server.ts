@@ -6,7 +6,7 @@ export default function createServerClient(request: Request) {
     const supabase = createServerClient_<Database>(
         process.env.SUPABASE_URL!,
         process.env.SUPABASE_ANON_KEY!,
-        { request, response }
+        { request, response },
     );
     return { supabase, response, headers: response.headers };
 }

@@ -13,5 +13,5 @@ if (searchParams.has('migrate') && !localStorage.getItem('bookmarkItems')) {
 createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
         <App />
-    </StrictMode>
+    </StrictMode>,
 );

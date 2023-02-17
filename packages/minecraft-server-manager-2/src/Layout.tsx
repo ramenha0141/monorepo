@@ -12,7 +12,7 @@ import {
     ListItemText,
     ListSubheader,
     Toolbar,
-    Typography
+    Typography,
 } from '@mui/material';
 import { Code as CodeIcon, Home as HomeIcon, Menu as MenuIcon } from '@mui/icons-material';
 import { Outlet, useNavigate } from 'react-router-dom';
@@ -35,12 +35,19 @@ const Layout = () => {
                 width: '100vw',
                 height: '100vh',
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
             }}
         >
             <AppBar position='static' sx={{ flexShrink: 0 }}>
                 <Toolbar>
-                    <IconButton size='large' edge='start' color='inherit' aria-label='menu' sx={{ mr: 2 }} onClick={toggleOpen}>
+                    <IconButton
+                        size='large'
+                        edge='start'
+                        color='inherit'
+                        aria-label='menu'
+                        sx={{ mr: 2 }}
+                        onClick={toggleOpen}
+                    >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
@@ -51,7 +58,10 @@ const Layout = () => {
             <Drawer open={open} onClose={toggleOpen}>
                 <List sx={{ flexGrow: 1, width: 240 }} onClick={toggleOpen}>
                     <ListItem key='home' disablePadding>
-                        <ListItemButton disabled={isRunning || isProcessing} onClick={() => navigate('/')}>
+                        <ListItemButton
+                            disabled={isRunning || isProcessing}
+                            onClick={() => navigate('/')}
+                        >
                             <ListItemIcon>
                                 <HomeIcon />
                             </ListItemIcon>
@@ -61,8 +71,15 @@ const Layout = () => {
                     <ListSubheader sx={{ backgroundColor: 'inherit' }}>プロファイル</ListSubheader>
                     {Object.entries(profiles).map(([id, { name, path }]) => (
                         <ListItem key={id} disablePadding>
-                            <ListItemButton disabled={isRunning || isProcessing} onClick={() => manageOrSetup(id)}>
-                                <ListItemText primary={name} secondary={path} sx={{ textOverflow: 'ellipsis' }} />
+                            <ListItemButton
+                                disabled={isRunning || isProcessing}
+                                onClick={() => manageOrSetup(id)}
+                            >
+                                <ListItemText
+                                    primary={name}
+                                    secondary={path}
+                                    sx={{ textOverflow: 'ellipsis' }}
+                                />
                             </ListItemButton>
                         </ListItem>
                     ))}
@@ -72,7 +89,10 @@ const Layout = () => {
                             <ListItemIcon>
                                 <CodeIcon />
                             </ListItemIcon>
-                            <ListItemText primary='開発者ツールを開く' sx={{ textOverflow: 'ellipsis' }} />
+                            <ListItemText
+                                primary='開発者ツールを開く'
+                                sx={{ textOverflow: 'ellipsis' }}
+                            />
                         </ListItemButton>
                     </ListItem>
                 </List>
@@ -82,7 +102,7 @@ const Layout = () => {
                     flexGrow: 1,
                     backgroundColor: theme.palette.background.default,
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
                 })}
             >
                 <Outlet />

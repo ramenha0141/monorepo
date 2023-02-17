@@ -15,7 +15,7 @@ import {
     ListItemText,
     Paper,
     TextField,
-    Typography
+    Typography,
 } from '@mui/material';
 import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
@@ -40,14 +40,14 @@ const Home = () => {
                     mt: 2,
                     mb: 4,
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
                 }}
             >
                 <Box
                     sx={{
                         flexShrink: 0,
                         display: 'flex',
-                        justifyContent: 'flex-end'
+                        justifyContent: 'flex-end',
                     }}
                 >
                     <IconButton onClick={toggleAddDialog}>
@@ -78,7 +78,11 @@ const Home = () => {
                 </List>
             </Box>
             <AddProfileDialog open={showAddDialog} onClose={toggleAddDialog} />
-            <DeleteProfileDialog open={showDeleteDialog} onClose={toggleDeleteDialog} deleteTarget={deleteTarget} />
+            <DeleteProfileDialog
+                open={showDeleteDialog}
+                onClose={toggleDeleteDialog}
+                deleteTarget={deleteTarget}
+            />
         </Box>
     );
 };
@@ -106,7 +110,13 @@ const AddProfileDialog = (props: { open: boolean; onClose: () => void }) => {
         <Dialog fullWidth={true} open={props.open} onClose={props.onClose}>
             <DialogTitle>プロファイルを追加</DialogTitle>
             <DialogContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                <TextField variant='standard' required label='名前' value={name} onChange={(event) => setName(event.target.value)} />
+                <TextField
+                    variant='standard'
+                    required
+                    label='名前'
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                />
                 <TextField
                     variant='standard'
                     required
@@ -121,7 +131,7 @@ const AddProfileDialog = (props: { open: boolean; onClose: () => void }) => {
                                     <FolderIcon />
                                 </IconButton>
                             </InputAdornment>
-                        )
+                        ),
                     }}
                     sx={{ mt: 1 }}
                 />
@@ -141,7 +151,11 @@ const AddProfileDialog = (props: { open: boolean; onClose: () => void }) => {
     );
 };
 
-const DeleteProfileDialog = (props: { open: boolean; onClose: () => void; deleteTarget: string }) => {
+const DeleteProfileDialog = (props: {
+    open: boolean;
+    onClose: () => void;
+    deleteTarget: string;
+}) => {
     const [profiles, setProfiles] = useAtom(profilesState);
     const handleDelete = () => {
         delete profiles[props.deleteTarget];
@@ -153,12 +167,19 @@ const DeleteProfileDialog = (props: { open: boolean; onClose: () => void; delete
             <DialogTitle>プロファイルを削除</DialogTitle>
             <DialogContent>
                 <Typography variant='body1'>
-                    <code style={{ padding: '0 4px', fontFamily: 'Consolas, "Courier New", Courier, Monaco, monospace' }}>
+                    <code
+                        style={{
+                            padding: '0 4px',
+                            fontFamily: 'Consolas, "Courier New", Courier, Monaco, monospace',
+                        }}
+                    >
                         {profiles[props.deleteTarget]?.name}
                     </code>
                     を削除しますか？
                 </Typography>
-                <Typography variant='body2'>(プロファイルを削除してもデータは失われません)</Typography>
+                <Typography variant='body2'>
+                    (プロファイルを削除してもデータは失われません)
+                </Typography>
             </DialogContent>
             <DialogActions>
                 <Button color='error' onClick={handleDelete}>

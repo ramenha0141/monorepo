@@ -2,7 +2,7 @@ const goUrl = (url: string, newTab?: boolean) => {
     if (newTab) {
         window.open(
             url.startsWith('https://') || url.startsWith('http://') ? url : `https://${url}`,
-            '_blank'
+            '_blank',
         );
     } else {
         location.href =

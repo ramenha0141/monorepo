@@ -12,7 +12,7 @@ const Youtube = () => {
                 disabled={!url}
                 onClick={() => {
                     goUrl(
-                        `https://hometab.live/api/youtube_download?url=${encodeURIComponent(url)}`
+                        `https://hometab.live/api/youtube_download?url=${encodeURIComponent(url)}`,
                     );
                     setUrl('');
                 }}

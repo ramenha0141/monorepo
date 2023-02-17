@@ -12,8 +12,8 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.join(__dirname, 'src'),
-            styles: path.join(__dirname, 'src/assets/styles')
-        }
+            styles: path.join(__dirname, 'src/assets/styles'),
+        },
     },
     plugins: [
         react(),
@@ -22,36 +22,36 @@ export default defineConfig({
                 entry: 'electron/main/index.ts',
                 vite: withDebug({
                     build: {
-                        outDir: 'dist/electron/main'
-                    }
-                })
+                        outDir: 'dist/electron/main',
+                    },
+                }),
             },
             preload: {
                 input: {
                     // You can configure multiple preload scripts here
-                    index: path.join(__dirname, 'electron/preload/index.ts')
+                    index: path.join(__dirname, 'electron/preload/index.ts'),
                 },
                 vite: {
                     build: {
                         // For debug
                         sourcemap: 'inline',
-                        outDir: 'dist/electron/preload'
-                    }
-                }
+                        outDir: 'dist/electron/preload',
+                    },
+                },
             },
             // Enables use of Node.js API in the Electron-Renderer
             // https://github.com/electron-vite/vite-plugin-electron/tree/main/packages/electron-renderer#electron-renderervite-serve
-            renderer: {}
+            renderer: {},
         }),
-        renderBuiltUrl()
+        renderBuiltUrl(),
     ],
     server: {
         host: pkg.env.VITE_DEV_SERVER_HOST,
-        port: pkg.env.VITE_DEV_SERVER_PORT
+        port: pkg.env.VITE_DEV_SERVER_PORT,
     },
     build: {
-        minify: false
-    }
+        minify: false,
+    },
 });
 
 function withDebug(config: UserConfig): UserConfig {
@@ -63,7 +63,7 @@ function withDebug(config: UserConfig): UserConfig {
                 const index = config.plugins.findIndex((p) => p.name === 'electron-main-watcher');
                 // At present, Vite can only modify plugins in configResolved hook.
                 (config.plugins as Plugin[]).splice(index, 1);
-            }
+            },
         });
     }
     return config;
@@ -103,7 +103,7 @@ function renderBuiltUrl(): Plugin {
         // other
         'webmanifest',
         'pdf',
-        'txt'
+        'txt',
     ];
 
     return {
@@ -111,13 +111,16 @@ function renderBuiltUrl(): Plugin {
         config(config) {
             config.experimental = {
                 renderBuiltUrl(filename, type) {
-                    if (KNOWN_ASSET_TYPES.includes(path.extname(filename).slice(1)) && type.hostType === 'js') {
+                    if (
+                        KNOWN_ASSET_TYPES.includes(path.extname(filename).slice(1)) &&
+                        type.hostType === 'js'
+                    ) {
                         // Avoid Vite relative-path assets handling
                         // https://github.com/vitejs/vite/blob/89dd31cfe228caee358f4032b31fdf943599c842/packages/vite/src/node/build.ts#L838-L875
                         return { runtime: JSON.stringify(filename) };
                     }
-                }
+                },
             };
-        }
+        },
     };
 }

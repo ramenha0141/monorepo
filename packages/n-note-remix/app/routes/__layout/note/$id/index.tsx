@@ -27,7 +27,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
                 author: user,
                 isMine,
             },
-            { headers }
+            { headers },
         );
 
     const {
@@ -41,7 +41,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
             author,
             isMine,
         },
-        { headers }
+        { headers },
     );
 };
 

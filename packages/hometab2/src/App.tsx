@@ -5,7 +5,7 @@ import {
     FormatListBulleted as FormatListBulletedIcon,
     RssFeed,
     Tune as TuneIcon,
-    YouTube as YouTubeIcon
+    YouTube as YouTubeIcon,
 } from '@mui/icons-material';
 import {
     Box,
@@ -20,7 +20,7 @@ import {
     SpeedDialIcon,
     ThemeProvider,
     Typography,
-    useMediaQuery
+    useMediaQuery,
 } from '@mui/material';
 import { lazy, Suspense, useMemo, useState } from 'react';
 import Bookmark from './Bookmark';
@@ -37,10 +37,10 @@ const App = () => {
         () =>
             createTheme({
                 palette: {
-                    mode: darkMode ? 'dark' : 'light'
-                }
+                    mode: darkMode ? 'dark' : 'light',
+                },
             }),
-        [darkMode]
+        [darkMode],
     );
     const [app, setApp] = useState<'tasks' | 'youtube' | 'calculator' | 'rss' | null>(null);
     return (
@@ -55,7 +55,7 @@ const App = () => {
                     }.webp")`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    backgroundSize: 'cover'
+                    backgroundSize: 'cover',
                 }}
             >
                 <Container
@@ -70,7 +70,7 @@ const App = () => {
                             flexGrow: 1,
                             display: 'flex',
                             justifyContent: 'end',
-                            alignItems: 'center'
+                            alignItems: 'center',
                         }}
                     ></Box>
                 </Container>
@@ -88,7 +88,7 @@ const App = () => {
                             display: 'flex',
                             justifyContent: 'flex-start',
                             alignItems: 'center',
-                            px: 1
+                            px: 1,
                         }}
                     >
                         <IconButton onClick={() => setApp(null)}>
@@ -113,7 +113,7 @@ const App = () => {
                                     flexGrow: 1,
                                     display: 'flex',
                                     justifyContent: 'center',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
                                 }}
                             >
                                 <CircularProgress color='inherit' />
@@ -139,7 +139,7 @@ const App = () => {
                     bottom: 32,
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: 2
+                    gap: 2,
                 }}
             >
                 <SpeedDial

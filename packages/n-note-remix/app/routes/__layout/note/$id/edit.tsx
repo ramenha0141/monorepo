@@ -43,7 +43,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
         {
             note,
         },
-        { headers }
+        { headers },
     );
 };
 

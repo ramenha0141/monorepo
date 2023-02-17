@@ -8,16 +8,25 @@ const api: API = {
     openFolder: () => ipcRenderer.invoke('openFolder'),
     isInstalled: (path: string) => ipcRenderer.invoke('isInstalled', path),
     getJavaVersion: () => ipcRenderer.invoke('getJavaVersion'),
-    installVanilla: (path: string, version: VanillaVersion) => ipcRenderer.send('installVanilla', path, version),
-    getDownloadState: () => new Promise((resolve, reject) => ipcRenderer.once('downloadState', (_, success) => (success ? resolve() : reject()))),
-    getInstallState: () => new Promise((resolve, reject) => ipcRenderer.once('installState', (_, success) => (success ? resolve() : reject()))),
+    installVanilla: (path: string, version: VanillaVersion) =>
+        ipcRenderer.send('installVanilla', path, version),
+    getDownloadState: () =>
+        new Promise((resolve, reject) =>
+            ipcRenderer.once('downloadState', (_, success) => (success ? resolve() : reject())),
+        ),
+    getInstallState: () =>
+        new Promise((resolve, reject) =>
+            ipcRenderer.once('installState', (_, success) => (success ? resolve() : reject())),
+        ),
     openProfile: (path: string) => ipcRenderer.invoke('openProfile', path),
     getProperties: () => ipcRenderer.invoke('getProperties'),
-    setProperties: (properties: { [key: string]: string }) => ipcRenderer.send('setProperties', properties),
+    setProperties: (properties: { [key: string]: string }) =>
+        ipcRenderer.send('setProperties', properties),
     getDiscordOptions: () => ipcRenderer.invoke('getDiscordOptions'),
-    setDiscordOptions: (discordOptions: DiscordOptions) => ipcRenderer.send('setDiscordOptions', discordOptions),
+    setDiscordOptions: (discordOptions: DiscordOptions) =>
+        ipcRenderer.send('setDiscordOptions', discordOptions),
     start: () => ipcRenderer.invoke('start'),
-    stop: () => ipcRenderer.invoke('stop')
+    stop: () => ipcRenderer.invoke('stop'),
 };
 
 contextBridge.exposeInMainWorld('api', api);

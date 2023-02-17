@@ -14,10 +14,10 @@ const App = () => {
         () =>
             createTheme({
                 palette: {
-                    mode: prefersDarkMode ? 'dark' : 'light'
-                }
+                    mode: prefersDarkMode ? 'dark' : 'light',
+                },
             }),
-        [prefersDarkMode]
+        [prefersDarkMode],
     );
     const setProfiles = useSetAtom(profilesState);
     useEffect(() => {

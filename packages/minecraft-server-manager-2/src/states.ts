@@ -7,7 +7,7 @@ export const profilesState = atom<Profiles, Profiles>(
     (_, set, value) => {
         set(profilesStateBase, value);
         window.api.setProfiles(value);
-    }
+    },
 );
 
 export const isRunningState = atom(false);

@@ -1,7 +1,7 @@
 import {
     Bookmark as BookmarkIcon,
     Google as GoogleIcon,
-    Web as WebIcon
+    Web as WebIcon,
 } from '@mui/icons-material';
 import { List, ListItem, ListItemAvatar, ListItemButton, ListItemText } from '@mui/material';
 import { ReactNode, useEffect, useMemo, useState } from 'react';
@@ -22,7 +22,7 @@ const domain_pattern = /^([\w]{3,}\.)+?(com|jp|co\.jp|net|dev|io)$/;
 
 const useComplete = (
     text: string,
-    setSelectedCandidate: (candidate: Candidate) => void
+    setSelectedCandidate: (candidate: Candidate) => void,
 ): [ReactNode, { selectPrev: () => void; selectNext: () => void }] => {
     const debouncedText = useDebounce(text, 150);
     const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -39,8 +39,8 @@ const useComplete = (
                     type: 'url',
                     text: debouncedText,
                     url: debouncedText,
-                    detail: 'Open URL'
-                }
+                    detail: 'Open URL',
+                },
             ]);
         } else if (debouncedText.startsWith('npm:') && debouncedText.length > 4) {
             setCandidates([
@@ -48,10 +48,10 @@ const useComplete = (
                     type: 'npm',
                     text: debouncedText,
                     url: `https://www.npmjs.com/search?q=${encodeURIComponent(
-                        debouncedText.slice(4)
+                        debouncedText.slice(4),
                     )}`,
-                    detail: 'Search NPM Package'
-                }
+                    detail: 'Search NPM Package',
+                },
             ]);
         } else {
             const isDomain = domain_pattern.test(debouncedText);
@@ -61,8 +61,8 @@ const useComplete = (
                     type: 'bookmark',
                     text: bookmark.title,
                     detail: `Open ${bookmark.url}`,
-                    url: bookmark.url
-                })
+                    url: bookmark.url,
+                }),
             );
             fetch(`https://hometab.live/api/complete?q=${debouncedText}`)
                 .then((res) => res.json())
@@ -72,9 +72,9 @@ const useComplete = (
                             type: 'search',
                             text: candidate,
                             url: `https://www.google.co.jp/search?q=${encodeURIComponent(
-                                candidate
-                            )}`
-                        })
+                                candidate,
+                            )}`,
+                        }),
                     );
                     if (isDomain) {
                         setCandidates([
@@ -82,10 +82,10 @@ const useComplete = (
                                 type: 'url',
                                 text: debouncedText,
                                 url: debouncedText,
-                                detail: 'Open URL'
+                                detail: 'Open URL',
                             },
                             ...bookmarkCandidates,
-                            ...searchCandidates
+                            ...searchCandidates,
                         ]);
                     } else {
                         setCandidates([...bookmarkCandidates, ...searchCandidates]);
@@ -135,7 +135,7 @@ const useComplete = (
                                         backgroundColor:
                                             i === selectedIndex
                                                 ? 'rgba(255, 255, 255, 0.12)'
-                                                : undefined
+                                                : undefined,
                                     }}
                                     onClick={() => runSearch(candidate)}
                                 >
@@ -154,8 +154,8 @@ const useComplete = (
                                         sx={{ textAlign: 'center' }}
                                         primaryTypographyProps={{
                                             sx: {
-                                                fontSize: 18
-                                            }
+                                                fontSize: 18,
+                                            },
                                         }}
                                         primary={candidate.text}
                                         secondary={candidate.detail}
@@ -165,9 +165,9 @@ const useComplete = (
                         ))}
                     </List>
                 ) : null,
-            [candidates, selectedIndex]
+            [candidates, selectedIndex],
         ),
-        { selectPrev, selectNext }
+        { selectPrev, selectNext },
     ];
 };
 export default useComplete;

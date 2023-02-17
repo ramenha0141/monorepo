@@ -8,7 +8,7 @@ const createLocalStorageAtom = <T>(key: string, initialValue: T) => {
         (_, set, value) => {
             set(base, value);
             localStorage.setItem(key, JSON.stringify(value));
-        }
+        },
     );
 };
 export default createLocalStorageAtom;

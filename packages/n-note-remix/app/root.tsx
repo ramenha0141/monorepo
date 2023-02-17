@@ -59,7 +59,7 @@ export const loader = async ({ request }: LoaderArgs) => {
             session,
             locale,
         },
-        { headers }
+        { headers },
     );
 };
 

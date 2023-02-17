@@ -7,7 +7,7 @@ const keys = [
     ['7', '8', '9', '×'],
     ['4', '5', '6', '-'],
     ['1', '2', '3', '+'],
-    ['neg', '0', '.', '=']
+    ['neg', '0', '.', '='],
 ];
 
 const isNumber = (str: string, integer?: boolean) =>
@@ -131,7 +131,7 @@ const Calculator = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                py: 4
+                py: 4,
             }}
         >
             <Box sx={{ height: 64, display: 'flex', alignItems: 'center', fontSize: 32 }}>
@@ -143,7 +143,7 @@ const Calculator = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: 0.25
+                    gap: 0.25,
                 }}
             >
                 {keys.map((row, i) => (
@@ -155,7 +155,7 @@ const Calculator = () => {
                                 sx={{
                                     width: 64,
                                     height: 64,
-                                    fontSize: /^[\d.%C]$/.test(key) ? 22 : 28
+                                    fontSize: /^[\d.%C]$/.test(key) ? 22 : 28,
                                 }}
                                 onClick={() => onClick(key)}
                             >

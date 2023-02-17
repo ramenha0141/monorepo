@@ -8,7 +8,13 @@ import DiscordConfig from './DiscordConfig';
 import { profilesState } from './states';
 
 const TabPanel = (props: { children: JSX.Element; value: number; index: number }) => (
-    <Box sx={{ flexGrow: 1, flexDirection: 'column', display: props.value === props.index ? 'flex' : 'none' }}>
+    <Box
+        sx={{
+            flexGrow: 1,
+            flexDirection: 'column',
+            display: props.value === props.index ? 'flex' : 'none',
+        }}
+    >
         {props.value === props.index && props.children}
     </Box>
 );
@@ -30,12 +36,21 @@ const Manage = () => {
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    transform: 'translate(-50%, -50%)'
+                    transform: 'translate(-50%, -50%)',
                 }}
             />
         );
     return (
-        <Box sx={{ flexGrow: 1, flexBasis: 0, mx: 8, mb: 4, display: 'flex', flexDirection: 'column' }}>
+        <Box
+            sx={{
+                flexGrow: 1,
+                flexBasis: 0,
+                mx: 8,
+                mb: 4,
+                display: 'flex',
+                flexDirection: 'column',
+            }}
+        >
             <Controls />
             <Box sx={{ mb: 1, borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={tabIndex} onChange={(_, tabIndex) => setTabIndex(tabIndex)}>

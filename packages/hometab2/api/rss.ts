@@ -35,7 +35,7 @@ const rss = async (req: VercelRequest, res: VercelResponse) => {
     const { url } = req.query;
     if (!(url && url.length && typeof url === 'string')) {
         res.status(400).json({
-            error: 'invalid "url" parameter'
+            error: 'invalid "url" parameter',
         });
         return;
     }
@@ -47,18 +47,18 @@ const rss = async (req: VercelRequest, res: VercelResponse) => {
                     (
                         await fetch(
                             `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
-                                url
-                            )}`
+                                url,
+                            )}`,
                         )
-                    ).json() as Promise<RSS>
-            )
+                    ).json() as Promise<RSS>,
+            ),
         )
     )
         .map(
             (rss) => (
                 rss.items.map((feed) => (feed.thumbnail ||= feed.enclosure.link || rss.feed.image)),
                 rss
-            )
+            ),
         )
         .map((rss) => rss.items)
         .flat()

@@ -5,7 +5,7 @@ import {
     MouseSensor,
     TouchSensor,
     useSensor,
-    useSensors
+    useSensors,
 } from '@dnd-kit/core';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -25,7 +25,7 @@ import {
     Menu,
     MenuItem,
     TextField,
-    Typography
+    Typography,
 } from '@mui/material';
 import { atom, useAtom } from 'jotai';
 import { MouseEvent, useEffect, useState } from 'react';
@@ -41,8 +41,8 @@ type DialogType = 'add' | 'edit' | 'delete';
 
 const bookmarkItemsAtomBase = atom<Bookmark[]>(
     (JSON.parse(localStorage.getItem('bookmarkItems') ?? '[]') as Omit<Bookmark, 'id'>[]).map(
-        (item) => ({ ...item, id: crypto.randomUUID() })
-    )
+        (item) => ({ ...item, id: crypto.randomUUID() }),
+    ),
 );
 const bookmarkItemsAtom = atom<Bookmark[], Bookmark[]>(
     (get) => get(bookmarkItemsAtomBase),
@@ -50,16 +50,16 @@ const bookmarkItemsAtom = atom<Bookmark[], Bookmark[]>(
         set(bookmarkItemsAtomBase, value);
         localStorage.setItem(
             'bookmarkItems',
-            JSON.stringify(value.map((item) => ({ ...item, id: undefined })))
+            JSON.stringify(value.map((item) => ({ ...item, id: undefined }))),
         );
-    }
+    },
 );
 
 export const bookmarkDB = create({
     schema: {
         title: 'string',
-        url: 'string'
-    }
+        url: 'string',
+    },
 });
 
 console.time('insert');
@@ -74,18 +74,18 @@ console.timeEnd('insert');
 const BookmarkItem = ({
     item,
     dragging,
-    onContextMenu
+    onContextMenu,
 }: {
     item: Bookmark;
     dragging: boolean;
     onContextMenu: (event: MouseEvent) => void;
 }) => {
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-        id: item.id
+        id: item.id,
     });
     const style = {
         transform: CSS.Transform.toString(transform),
-        transition
+        transition,
     };
     return (
         <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
@@ -96,7 +96,7 @@ const BookmarkItem = ({
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    cursor: dragging ? 'grabbing' : 'pointer'
+                    cursor: dragging ? 'grabbing' : 'pointer',
                 }}
                 onClick={() => goUrl(item.url)}
                 onMouseUp={(e) => {
@@ -110,7 +110,7 @@ const BookmarkItem = ({
                         width: 64,
                         height: 64,
                         borderRadius: 12,
-                        filter: `brightness(${dragging ? '60%' : '100%'})`
+                        filter: `brightness(${dragging ? '60%' : '100%'})`,
                     }}
                 />
                 <Typography
@@ -122,7 +122,7 @@ const BookmarkItem = ({
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        color: '#fff'
+                        color: '#fff',
                     }}
                 >
                     {item.title}
@@ -136,7 +136,7 @@ const BookmarkDialog = ({
     open,
     onClose,
     dialogType,
-    id
+    id,
 }: {
     open: boolean;
     onClose: () => void;
@@ -163,8 +163,8 @@ const BookmarkDialog = ({
             {
                 id: crypto.randomUUID(),
                 title,
-                url
-            }
+                url,
+            },
         ]);
         onClose();
         insert(bookmarkDB, { title, url });
@@ -191,7 +191,7 @@ const BookmarkDialog = ({
                     {
                         {
                             add: 'Add bookmark',
-                            edit: 'Edit bookmark'
+                            edit: 'Edit bookmark',
                         }[dialogType]
                     }
                 </DialogTitle>
@@ -253,10 +253,10 @@ const Bookmark = () => {
     const sensors = useSensors(
         useSensor(MouseSensor, {
             activationConstraint: {
-                distance: 10
-            }
+                distance: 10,
+            },
         }),
-        useSensor(TouchSensor, { activationConstraint: { distance: 10 } })
+        useSensor(TouchSensor, { activationConstraint: { distance: 10 } }),
     );
     const onDragStart = ({ active }: DragStartEvent) => setDraggingId(active.id as string);
     const onDragEnd = ({ active, over }: DragEndEvent) => {
@@ -291,7 +291,7 @@ const Bookmark = () => {
                             flexWrap: 'wrap',
                             alignContent: 'flex-start',
                             gap: 3,
-                            overflowY: 'auto'
+                            overflowY: 'auto',
                         }}
                     >
                         {bookmarkItems.map((item) => (
@@ -328,7 +328,7 @@ const Bookmark = () => {
                     contextMenu !== null
                         ? {
                               left: contextMenu.x,
-                              top: contextMenu.y
+                              top: contextMenu.y,
                           }
                         : undefined
                 }

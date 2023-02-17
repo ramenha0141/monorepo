@@ -15,12 +15,12 @@ import {
     ListItemSecondaryAction,
     ListItemText,
     Tab,
-    TextField
+    TextField,
 } from '@mui/material';
 import {
     Delete as DeleteIcon,
     Done as DoneIcon,
-    FormatListBulleted as FormatListBulletedIcon
+    FormatListBulleted as FormatListBulletedIcon,
 } from '@mui/icons-material';
 import createLocalStorageAtom from './createLocalStorageAtom';
 import { useAtom } from 'jotai';
@@ -48,8 +48,8 @@ const NewTaskDialog = ({ open, onClose }: { open: boolean; onClose: () => void }
             ...todo,
             {
                 title,
-                detail
-            }
+                detail,
+            },
         ]);
         onClose();
     };
@@ -87,7 +87,7 @@ const Tasks = () => {
         const newTodo = [...todo];
         setFinished([
             ...finished,
-            { ...newTodo.splice(index, 1)[0], finishedDate: new Date().toDateString() }
+            { ...newTodo.splice(index, 1)[0], finishedDate: new Date().toDateString() },
         ]);
         setTodo(newTodo);
     };

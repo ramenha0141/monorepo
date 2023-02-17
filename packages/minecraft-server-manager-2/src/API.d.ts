@@ -9,7 +9,17 @@ export interface Profiles {
     [id: string]: Profile;
 }
 
-export type Version = '1.19.2' | '1.19' | '1.18.2' | '1.17.1' | '1.16.5' | '1.15.2' | '1.14.4' | '1.13.2' | '1.12.2' | 'Paper1.19.2';
+export type Version =
+    | '1.19.2'
+    | '1.19'
+    | '1.18.2'
+    | '1.17.1'
+    | '1.16.5'
+    | '1.15.2'
+    | '1.14.4'
+    | '1.13.2'
+    | '1.12.2'
+    | 'Paper1.19.2';
 
 export interface DiscordOptions {
     enabled: boolean;

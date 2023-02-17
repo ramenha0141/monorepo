@@ -40,18 +40,40 @@ const Controls = () => {
     return (
         <Box sx={{ flexShrink: 0, mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
             <ButtonGroup>
-                <LoadingButton variant='contained' disabled={isRunning || isProcessing} loading={isProcessing && !isRunning} onClick={start}>
+                <LoadingButton
+                    variant='contained'
+                    disabled={isRunning || isProcessing}
+                    loading={isProcessing && !isRunning}
+                    onClick={start}
+                >
                     <PlayArrowIcon />
                 </LoadingButton>
-                <LoadingButton variant='contained' disabled={!isRunning || isProcessing} loading={isProcessing && isRunning} onClick={stop}>
+                <LoadingButton
+                    variant='contained'
+                    disabled={!isRunning || isProcessing}
+                    loading={isProcessing && isRunning}
+                    onClick={stop}
+                >
                     <StopIcon />
                 </LoadingButton>
             </ButtonGroup>
-            <Snackbar open={isShowAlert} autoHideDuration={4000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={closeAlert}>
-                <Alert severity={alertType?.endsWith('success') ? 'success' : 'error'} onClose={closeAlert}>
+            <Snackbar
+                open={isShowAlert}
+                autoHideDuration={4000}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                onClose={closeAlert}
+            >
+                <Alert
+                    severity={alertType?.endsWith('success') ? 'success' : 'error'}
+                    onClose={closeAlert}
+                >
                     {alertType?.endsWith('success')
-                        ? `サーバーが正常に${alertType === 'start_success' ? '起動' : '停止'}しました`
-                        : `サーバーの${alertType === 'start_failed' ? '起動' : '停止'}に失敗しました`}
+                        ? `サーバーが正常に${
+                              alertType === 'start_success' ? '起動' : '停止'
+                          }しました`
+                        : `サーバーの${
+                              alertType === 'start_failed' ? '起動' : '停止'
+                          }に失敗しました`}
                 </Alert>
             </Snackbar>
         </Box>

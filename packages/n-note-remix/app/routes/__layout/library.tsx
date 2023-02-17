@@ -34,7 +34,7 @@ export const loader = async ({ request }: LoaderArgs) => {
             items,
             author: user,
         },
-        { headers: response.headers }
+        { headers: response.headers },
     );
 };
 
