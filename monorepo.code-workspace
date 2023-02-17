@@ -5,6 +5,9 @@
             "path": "."
         },
         {
+            "path": "packages/home-tab"
+        },
+        {
             "path": "packages/hometab2"
         },
         {
@@ -31,6 +34,9 @@
             "editor.defaultFormatter": "rome.rome"
         },
         "[typescript]": {
+            "editor.defaultFormatter": "rome.rome"
+        },
+        "[typescriptreact]": {
             "editor.defaultFormatter": "rome.rome"
         }
     }
