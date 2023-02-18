@@ -93,7 +93,7 @@ const getSearchCandidates = async (text: string): Promise<Candidate[]> =>
         url: `https://www.google.co.jp/search?q=${encodeURIComponent(candidateText)}`,
     }));
 
-const navigate = (url: string) => {
+export const navigate = (url: string) => {
     location.href =
         url.startsWith('https://') || url.startsWith('http://') ? url : `https://${url}`;
 };
