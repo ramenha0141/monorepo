@@ -1,8 +1,8 @@
 {
     "name": "home-tab",
     "displayName": "HomeTab",
-    "version": "0.0.1",
-    "description": "A basic Plasmo extension.",
+    "version": "1.0.0",
+    "description": "",
     "author": "ramenha0141",
     "scripts": {
         "dev": "plasmo dev",
