@@ -252,7 +252,7 @@ const useBookmarkItems = (): [Bookmark[], (bookmarkItems: Bookmark[]) => void] =
     const [bookmarkItems, setBookmarkItems] = useState<Bookmark[] | null>(null);
 
     useEffect(() => {
-        storage.get('bookmarkItems').then((json) => setBookmarkItems(JSON.parse(json)));
+        storage.get('bookmarkItems').then((json) => setBookmarkItems(JSON.parse(json ?? '[]')));
     }, []);
 
     return [
