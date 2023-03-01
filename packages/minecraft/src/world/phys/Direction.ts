@@ -23,15 +23,16 @@ class Axis {
 export default class Direction {
     static Axis = Axis;
 
-    static readonly North = new Direction('north', new Vec3(0, 0, -1), Axis.Negative);
-    static readonly South = new Direction('south', new Vec3(0, 0, 1), Axis.Positive);
-    static readonly West = new Direction('west', new Vec3(-1, 0, 0), Axis.Negative);
-    static readonly East = new Direction('east', new Vec3(1, 0, 0), Axis.Positive);
-    static readonly Down = new Direction('down', new Vec3(0, -1, 0), Axis.Negative);
-    static readonly Up = new Direction('up', new Vec3(0, 1, 0), Axis.Positive);
+    static readonly North = new Direction('north', 0, new Vec3(0, 0, -1), Axis.Negative);
+    static readonly South = new Direction('south', 1, new Vec3(0, 0, 1), Axis.Positive);
+    static readonly West = new Direction('west', 2, new Vec3(-1, 0, 0), Axis.Negative);
+    static readonly East = new Direction('east', 3, new Vec3(1, 0, 0), Axis.Positive);
+    static readonly Down = new Direction('down', 4, new Vec3(0, -1, 0), Axis.Negative);
+    static readonly Up = new Direction('up', 5, new Vec3(0, 1, 0), Axis.Positive);
 
     private constructor(
         public readonly name: 'north' | 'south' | 'west' | 'east' | 'down' | 'up',
+        public readonly index: number,
         public readonly vec: Vec3,
         public readonly axis: Axis,
     ) {}
