@@ -2,5 +2,11 @@
     "name": "minecraft",
     "version": "1.0.0",
     "type": "module",
-    "main": "src/index.ts"
+    "main": "src/index.ts",
+    "devDependencies": {
+        "typescript": "^4.9.5"
+    },
+    "dependencies": {
+        "ts-array-length": "^0.1.2"
+    }
 }

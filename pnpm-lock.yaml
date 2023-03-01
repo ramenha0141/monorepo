@@ -99,7 +99,13 @@ importers:
       vite: 3.2.5
 
   packages/minecraft:
-    specifiers: {}
+    specifiers:
+      ts-array-length: ^0.1.2
+      typescript: ^4.9.5
+    dependencies:
+      ts-array-length: 0.1.2
+    devDependencies:
+      typescript: 4.9.5
 
   packages/minecraft-server-manager-2:
     specifiers:
@@ -13696,6 +13702,10 @@ packages:
     resolution: {integrity: sha512-W43a3/BN0Tp4SgRNERQF/QPVuY1rnHkgCr/fISLY0Ycu05P0NWPYRuViU8JFn+pFZuY6/zp9TgET1fxMzppR/Q==}
     dependencies:
       ts-toolbelt: 9.6.0
+    dev: false
+
+  /ts-array-length/0.1.2:
+    resolution: {integrity: sha512-x/e5IkAhltwO/O9RZU4MQXlu8cAY9NJH6vwv53FgjK4Bmvwim3Ll6z5XB5xbP79v8Yu3g/fMI5sK42JKKEDudA==}
     dev: false
 
   /ts-interface-checker/0.1.13:

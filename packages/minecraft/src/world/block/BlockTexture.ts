@@ -1,11 +1,10 @@
+import { ReadonlyArrayMinLength } from 'ts-array-length';
 import Direction from '../phys/Direction';
 
 export default class BlockTexture {
-    public readonly textures: string[];
+    public readonly textures: ReadonlyArrayMinLength<string, 1>;
 
-    constructor(...textures: string[]) {
-        if (!textures.length) throw new Error();
-
+    constructor(...textures: ReadonlyArrayMinLength<string, 1>) {
         this.textures = textures;
     }
 

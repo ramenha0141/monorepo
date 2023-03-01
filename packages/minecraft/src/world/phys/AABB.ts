@@ -1,3 +1,4 @@
+import { hasLength, ReadonlyArrayExactLength } from 'ts-array-length';
 import Vec3 from './Vec3';
 
 export default class AABB {
@@ -11,11 +12,15 @@ export default class AABB {
 
     constructor(minX: number, minY: number, minZ: number, maxX: number, maxY: number, maxZ: number);
     constructor(min: Vec3, max: Vec3);
-    constructor(min: Vec3, size?: number);
+    constructor(min: Vec3, size: number);
     constructor(
-        ...args: [number, number, number, number, number, number] | [Vec3, Vec3] | [Vec3, number?]
+        ...args:
+            | ReadonlyArrayExactLength<number, 6>
+            | ReadonlyArrayExactLength<number, 6>
+            | ReadonlyArrayExactLength<Vec3, 2>
+            | [Vec3, number]
     ) {
-        if (f1(args)) {
+        if (hasLength(args, 6)) {
             this.minX = Math.min(args[0], args[3]);
             this.minY = Math.min(args[1], args[4]);
             this.minZ = Math.min(args[2], args[5]);
@@ -23,7 +28,7 @@ export default class AABB {
             this.maxX = Math.max(args[0], args[3]);
             this.maxY = Math.max(args[1], args[4]);
             this.maxZ = Math.max(args[2], args[5]);
-        } else if (f2(args)) {
+        } else if (typeof args[1] === 'object') {
             const [min, max] = args;
 
             this.minX = Math.min(min.x, max.x);
@@ -34,8 +39,7 @@ export default class AABB {
             this.maxY = Math.max(min.y, max.y);
             this.maxZ = Math.max(min.z, max.z);
         } else {
-            const [min] = args;
-            const size = args[1] ?? 1;
+            const [min, size] = args;
 
             this.minX = min.x;
             this.minY = min.y;
@@ -54,12 +58,4 @@ export default class AABB {
     public max(): Vec3 {
         return new Vec3(this.maxX, this.maxY, this.maxZ);
     }
-}
-
-function f1(args: unknown[]): args is [number, number, number, number, number, number] {
-    return typeof args[0] === 'number';
-}
-
-function f2(args: unknown[]): args is [Vec3, Vec3] {
-    return args[0] instanceof Vec3 && args[1] instanceof Vec3;
 }
