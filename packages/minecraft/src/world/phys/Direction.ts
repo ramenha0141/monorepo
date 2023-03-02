@@ -9,13 +9,15 @@ class Axis {
         public readonly step: number,
     ) {}
 
-    //@ts-expect-error
     public get opposite(): Axis {
         switch (this) {
             case Axis.Negative:
                 return Axis.Positive;
             case Axis.Positive:
                 return Axis.Negative;
+            default: {
+                throw new Error();
+            }
         }
     }
 }
@@ -37,7 +39,6 @@ export default class Direction {
         public readonly axis: Axis,
     ) {}
 
-    //@ts-expect-error
     public get opposite(): Direction {
         switch (this) {
             case Direction.North:
@@ -52,6 +53,9 @@ export default class Direction {
                 return Direction.Up;
             case Direction.Up:
                 return Direction.Down;
+            default: {
+                throw new Error();
+            }
         }
     }
 }
