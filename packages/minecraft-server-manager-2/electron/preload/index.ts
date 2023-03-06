@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { API, DiscordOptions, Profiles, VanillaVersion } from '../../src/API';
+import type { API, DiscordOptions, Profiles, Version } from '../../src/API';
 
 const api: API = {
     openDevtools: () => ipcRenderer.send('openDevtools'),
@@ -8,7 +8,7 @@ const api: API = {
     openFolder: () => ipcRenderer.invoke('openFolder'),
     isInstalled: (path: string) => ipcRenderer.invoke('isInstalled', path),
     getJavaVersion: () => ipcRenderer.invoke('getJavaVersion'),
-    installVanilla: (path: string, version: VanillaVersion) =>
+    installVanilla: (path: string, version: Version) =>
         ipcRenderer.send('installVanilla', path, version),
     getDownloadState: () =>
         new Promise((resolve, reject) =>
